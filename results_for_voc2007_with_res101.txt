@@ -1,0 +1,60 @@
+
+Reading annotation for 4601/4952
+Reading annotation for 4701/4952
+Reading annotation for 4801/4952
+Reading annotation for 4901/4952
+Saving cached annotations to /home/wenxiangyu/project/tf-faster-rcnn/data/VOCdevkit2007/VOC2007/ImageSets/Main/test.txt_annots.pkl
+AP for aeroplane = 0.7814
+AP for bicycle = 0.8050
+AP for bird = 0.7813
+AP for boat = 0.6352
+AP for bottle = 0.6223
+AP for bus = 0.8036
+AP for car = 0.8284
+AP for cat = 0.8638
+AP for chair = 0.5695
+AP for cow = 0.8330
+AP for diningtable = 0.7216
+AP for dog = 0.8557
+AP for horse = 0.8376
+AP for motorbike = 0.7790
+AP for person = 0.7920
+AP for pottedplant = 0.4793
+AP for sheep = 0.7721
+AP for sofa = 0.7608
+AP for train = 0.7910
+AP for tvmonitor = 0.7338
+Mean AP = 0.7523
+~~~~~~~~
+Results:
+0.781
+0.805
+0.781
+0.635
+0.622
+0.804
+0.828
+0.864
+0.570
+0.833
+0.722
+0.856
+0.838
+0.779
+0.792
+0.479
+0.772
+0.761
+0.791
+0.734
+0.752
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+941.01user 348.27system 18:43.16elapsed 114%CPU (0avgtext+0avgdata 2075980maxresident)k
+8inputs+108256outputs (0major+7144928minor)pagefaults 0swaps
