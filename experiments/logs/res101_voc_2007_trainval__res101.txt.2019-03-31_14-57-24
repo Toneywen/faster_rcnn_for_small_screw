@@ -1,0 +1,1695 @@
++ echo Logging output to experiments/logs/res101_voc_2007_trainval__res101.txt.2019-03-31_14-57-24
+Logging output to experiments/logs/res101_voc_2007_trainval__res101.txt.2019-03-31_14-57-24
++ set +x
++ '[' '!' -f output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_3000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=3
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/res101.ckpt --imdb voc_2007_trainval --imdbval voc_2007_test --iters 3000 --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[50]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/res101.yml', imdb_name='voc_2007_trainval', imdbval_name='voc_2007_test', max_iters=3000, net='res101', set_cfgs=['ANCHOR_SCALES', '[8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[50]'], tag=None, weight='data/imagenet_weights/res101.ckpt')
+/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/model/config.py:362: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'DATA_DIR': '/home/wenxiangyu/project/tf-faster-rcnn/data',
+ 'EXP_DIR': 'res101',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/home/wenxiangyu/project/tf-faster-rcnn',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 10,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 10,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [50],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+wrote gt roidb to /home/wenxiangyu/project/tf-faster-rcnn/data/cache/voc_2007_trainval_gt_roidb.pkl
+done
+Preparing training data...
+done
+200 roidb entries
+Output will be saved to `/home/wenxiangyu/project/tf-faster-rcnn/output/res101/voc_2007_trainval/default`
+TensorFlow summaries will be saved to `/home/wenxiangyu/project/tf-faster-rcnn/tensorboard/res101/voc_2007_trainval/default`
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+wrote gt roidb to /home/wenxiangyu/project/tf-faster-rcnn/data/cache/voc_2007_test_gt_roidb.pkl
+done
+10 validation roidb entries
+Filtered 0 roidb entries: 200 -> 200
+Filtered 0 roidb entries: 10 -> 10
+2019-03-31 14:57:26.219403: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-03-31 14:57:26.465037: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: TITAN Xp COLLECTORS EDITION major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:89:00.0
+totalMemory: 11.91GiB freeMemory: 7.53GiB
+2019-03-31 14:57:26.465091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2019-03-31 14:57:26.812034: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-03-31 14:57:26.812087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 
+2019-03-31 14:57:26.812096: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N 
+2019-03-31 14:57:26.813197: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7275 MB memory) -> physical GPU (device: 0, name: TITAN Xp COLLECTORS EDITION, pci bus id: 0000:89:00.0, compute capability: 6.1)
+Solving...
+/home/wenxiangyu/anaconda2/envs/faster_rcnn/lib/python2.7/site-packages/tensorflow/python/ops/gradients_impl.py:100: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Loading initial model weights from data/imagenet_weights/res101.ckpt
+Variables restored: resnet_v1_101/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/shortcut/weights:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/shortcut/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/shortcut/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_1/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_2/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block1/unit_3/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/shortcut/weights:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/shortcut/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/shortcut/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_1/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_2/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_3/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block2/unit_4/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/shortcut/weights:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/shortcut/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/shortcut/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_1/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_2/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_3/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_4/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_5/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_6/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_7/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_8/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_9/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_10/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_11/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_12/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_13/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_14/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_15/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_16/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_17/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_18/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_19/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_20/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_21/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_22/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block3/unit_23/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/shortcut/weights:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/shortcut/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/shortcut/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/shortcut/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_1/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_2/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv1/weights:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv1/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv1/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv1/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv1/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv2/weights:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv2/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv2/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv2/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv2/BatchNorm/moving_variance:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv3/weights:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv3/BatchNorm/gamma:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv3/BatchNorm/beta:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv3/BatchNorm/moving_mean:0
+Variables restored: resnet_v1_101/block4/unit_3/bottleneck_v1/conv3/BatchNorm/moving_variance:0
+Loaded.
+Fix Resnet V1 layers..
+Fixed.
+iter: 20 / 3000, total loss: 1.709735
+ >>> rpn_loss_cls: 0.551291
+ >>> rpn_loss_box: 0.326009
+ >>> loss_cls: 0.150953
+ >>> loss_box: 0.298941
+ >>> lr: 0.001000
+speed: 0.831s / iter
+iter: 40 / 3000, total loss: 1.994619
+ >>> rpn_loss_cls: 0.368414
+ >>> rpn_loss_box: 0.486575
+ >>> loss_cls: 0.280242
+ >>> loss_box: 0.476804
+ >>> lr: 0.001000
+speed: 0.584s / iter
+Wrote snapshot to: /home/wenxiangyu/project/tf-faster-rcnn/output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_51.ckpt
+iter: 60 / 3000, total loss: 1.763956
+ >>> rpn_loss_cls: 0.166364
+ >>> rpn_loss_box: 0.346833
+ >>> loss_cls: 0.241121
+ >>> loss_box: 0.627046
+ >>> lr: 0.000100
+speed: 0.490s / iter
+iter: 80 / 3000, total loss: 0.868011
+ >>> rpn_loss_cls: 0.105858
+ >>> rpn_loss_box: 0.102949
+ >>> loss_cls: 0.023476
+ >>> loss_box: 0.253137
+ >>> lr: 0.000100
+speed: 0.444s / iter
+iter: 100 / 3000, total loss: 1.228354
+ >>> rpn_loss_cls: 0.079261
+ >>> rpn_loss_box: 0.254968
+ >>> loss_cls: 0.066491
+ >>> loss_box: 0.445043
+ >>> lr: 0.000100
+speed: 0.407s / iter
+iter: 120 / 3000, total loss: 0.983576
+ >>> rpn_loss_cls: 0.123115
+ >>> rpn_loss_box: 0.023749
+ >>> loss_cls: 0.120598
+ >>> loss_box: 0.333525
+ >>> lr: 0.000100
+speed: 0.383s / iter
+iter: 140 / 3000, total loss: 1.034793
+ >>> rpn_loss_cls: 0.092924
+ >>> rpn_loss_box: 0.089973
+ >>> loss_cls: 0.041647
+ >>> loss_box: 0.427661
+ >>> lr: 0.000100
+speed: 0.366s / iter
+iter: 160 / 3000, total loss: 0.702968
+ >>> rpn_loss_cls: 0.022304
+ >>> rpn_loss_box: 0.024928
+ >>> loss_cls: 0.028638
+ >>> loss_box: 0.244511
+ >>> lr: 0.000100
+speed: 0.351s / iter
+iter: 180 / 3000, total loss: 1.283477
+ >>> rpn_loss_cls: 0.052799
+ >>> rpn_loss_box: 0.232513
+ >>> loss_cls: 0.110568
+ >>> loss_box: 0.505011
+ >>> lr: 0.000100
+speed: 0.340s / iter
+iter: 200 / 3000, total loss: 285.189667
+ >>> rpn_loss_cls: 3.117414
+ >>> rpn_loss_box: 280.996124
+ >>> loss_cls: 0.061336
+ >>> loss_box: 0.632192
+ >>> lr: 0.000100
+speed: 0.330s / iter
+iter: 220 / 3000, total loss: 1.091270
+ >>> rpn_loss_cls: 0.074887
+ >>> rpn_loss_box: 0.155780
+ >>> loss_cls: 0.185059
+ >>> loss_box: 0.292959
+ >>> lr: 0.000100
+speed: 0.323s / iter
+iter: 240 / 3000, total loss: 1.046803
+ >>> rpn_loss_cls: 0.056734
+ >>> rpn_loss_box: 0.076561
+ >>> loss_cls: 0.019161
+ >>> loss_box: 0.511763
+ >>> lr: 0.000100
+speed: 0.316s / iter
+iter: 260 / 3000, total loss: 1.109088
+ >>> rpn_loss_cls: 0.258528
+ >>> rpn_loss_box: 0.214747
+ >>> loss_cls: 0.022967
+ >>> loss_box: 0.230263
+ >>> lr: 0.000100
+speed: 0.309s / iter
+iter: 280 / 3000, total loss: 0.915164
+ >>> rpn_loss_cls: 0.015931
+ >>> rpn_loss_box: 0.032084
+ >>> loss_cls: 0.142323
+ >>> loss_box: 0.342244
+ >>> lr: 0.000100
+speed: 0.304s / iter
+iter: 300 / 3000, total loss: 1.159938
+ >>> rpn_loss_cls: 0.085812
+ >>> rpn_loss_box: 0.164350
+ >>> loss_cls: 0.083847
+ >>> loss_box: 0.443348
+ >>> lr: 0.000100
+speed: 0.299s / iter
+iter: 320 / 3000, total loss: 0.862775
+ >>> rpn_loss_cls: 0.050342
+ >>> rpn_loss_box: 0.056854
+ >>> loss_cls: 0.008526
+ >>> loss_box: 0.364473
+ >>> lr: 0.000100
+speed: 0.294s / iter
+iter: 340 / 3000, total loss: 0.698498
+ >>> rpn_loss_cls: 0.017641
+ >>> rpn_loss_box: 0.007510
+ >>> loss_cls: 0.010834
+ >>> loss_box: 0.279934
+ >>> lr: 0.000100
+speed: 0.291s / iter
+iter: 360 / 3000, total loss: 0.761396
+ >>> rpn_loss_cls: 0.020002
+ >>> rpn_loss_box: 0.027372
+ >>> loss_cls: 0.026339
+ >>> loss_box: 0.305104
+ >>> lr: 0.000100
+speed: 0.287s / iter
+iter: 380 / 3000, total loss: 14.911956
+ >>> rpn_loss_cls: 4.004377
+ >>> rpn_loss_box: 10.105455
+ >>> loss_cls: 0.012603
+ >>> loss_box: 0.406943
+ >>> lr: 0.000100
+speed: 0.284s / iter
+iter: 400 / 3000, total loss: 1.180982
+ >>> rpn_loss_cls: 0.359479
+ >>> rpn_loss_box: 0.051266
+ >>> loss_cls: 0.039722
+ >>> loss_box: 0.347939
+ >>> lr: 0.000100
+speed: 0.282s / iter
+iter: 420 / 3000, total loss: 0.975548
+ >>> rpn_loss_cls: 0.042442
+ >>> rpn_loss_box: 0.063943
+ >>> loss_cls: 0.148040
+ >>> loss_box: 0.338548
+ >>> lr: 0.000100
+speed: 0.280s / iter
+iter: 440 / 3000, total loss: 0.917734
+ >>> rpn_loss_cls: 0.125810
+ >>> rpn_loss_box: 0.013705
+ >>> loss_cls: 0.069723
+ >>> loss_box: 0.325922
+ >>> lr: 0.000100
+speed: 0.278s / iter
+iter: 460 / 3000, total loss: 0.985224
+ >>> rpn_loss_cls: 0.057447
+ >>> rpn_loss_box: 0.132087
+ >>> loss_cls: 0.171745
+ >>> loss_box: 0.241371
+ >>> lr: 0.000100
+speed: 0.277s / iter
+iter: 480 / 3000, total loss: 0.918155
+ >>> rpn_loss_cls: 0.051210
+ >>> rpn_loss_box: 0.033727
+ >>> loss_cls: 0.045134
+ >>> loss_box: 0.405511
+ >>> lr: 0.000100
+speed: 0.275s / iter
+iter: 500 / 3000, total loss: 0.830798
+ >>> rpn_loss_cls: 0.053891
+ >>> rpn_loss_box: 0.066732
+ >>> loss_cls: 0.066119
+ >>> loss_box: 0.261484
+ >>> lr: 0.000100
+speed: 0.274s / iter
+iter: 520 / 3000, total loss: 0.806151
+ >>> rpn_loss_cls: 0.027439
+ >>> rpn_loss_box: 0.071272
+ >>> loss_cls: 0.089536
+ >>> loss_box: 0.235333
+ >>> lr: 0.000100
+speed: 0.273s / iter
+iter: 540 / 3000, total loss: 0.965928
+ >>> rpn_loss_cls: 0.078692
+ >>> rpn_loss_box: 0.131315
+ >>> loss_cls: 0.040663
+ >>> loss_box: 0.332687
+ >>> lr: 0.000100
+speed: 0.271s / iter
+iter: 560 / 3000, total loss: 0.668345
+ >>> rpn_loss_cls: 0.030992
+ >>> rpn_loss_box: 0.069409
+ >>> loss_cls: 0.007065
+ >>> loss_box: 0.178310
+ >>> lr: 0.000100
+speed: 0.270s / iter
+iter: 580 / 3000, total loss: 0.778794
+ >>> rpn_loss_cls: 0.012415
+ >>> rpn_loss_box: 0.020674
+ >>> loss_cls: 0.027643
+ >>> loss_box: 0.335494
+ >>> lr: 0.000100
+speed: 0.268s / iter
+iter: 600 / 3000, total loss: 0.631006
+ >>> rpn_loss_cls: 0.045323
+ >>> rpn_loss_box: 0.067678
+ >>> loss_cls: 0.018622
+ >>> loss_box: 0.116816
+ >>> lr: 0.000100
+speed: 0.267s / iter
+iter: 620 / 3000, total loss: 0.828689
+ >>> rpn_loss_cls: 0.100652
+ >>> rpn_loss_box: 0.117201
+ >>> loss_cls: 0.022505
+ >>> loss_box: 0.205765
+ >>> lr: 0.000100
+speed: 0.266s / iter
+iter: 640 / 3000, total loss: 0.935006
+ >>> rpn_loss_cls: 0.026331
+ >>> rpn_loss_box: 0.015794
+ >>> loss_cls: 0.275102
+ >>> loss_box: 0.235215
+ >>> lr: 0.000100
+speed: 0.265s / iter
+iter: 660 / 3000, total loss: 0.820128
+ >>> rpn_loss_cls: 0.111850
+ >>> rpn_loss_box: 0.104624
+ >>> loss_cls: 0.054471
+ >>> loss_box: 0.166619
+ >>> lr: 0.000100
+speed: 0.264s / iter
+iter: 680 / 3000, total loss: 0.845738
+ >>> rpn_loss_cls: 0.033579
+ >>> rpn_loss_box: 0.011725
+ >>> loss_cls: 0.300719
+ >>> loss_box: 0.117151
+ >>> lr: 0.000100
+speed: 0.263s / iter
+iter: 700 / 3000, total loss: 4.722580
+ >>> rpn_loss_cls: 2.359222
+ >>> rpn_loss_box: 1.836209
+ >>> loss_cls: 0.007667
+ >>> loss_box: 0.136918
+ >>> lr: 0.000100
+speed: 0.262s / iter
+iter: 720 / 3000, total loss: 0.718518
+ >>> rpn_loss_cls: 0.041426
+ >>> rpn_loss_box: 0.141251
+ >>> loss_cls: 0.005411
+ >>> loss_box: 0.147866
+ >>> lr: 0.000100
+speed: 0.261s / iter
+iter: 740 / 3000, total loss: 1.044462
+ >>> rpn_loss_cls: 0.022754
+ >>> rpn_loss_box: 0.058868
+ >>> loss_cls: 0.246061
+ >>> loss_box: 0.334217
+ >>> lr: 0.000100
+speed: 0.261s / iter
+iter: 760 / 3000, total loss: 0.627979
+ >>> rpn_loss_cls: 0.072998
+ >>> rpn_loss_box: 0.050693
+ >>> loss_cls: 0.032386
+ >>> loss_box: 0.089340
+ >>> lr: 0.000100
+speed: 0.260s / iter
+iter: 780 / 3000, total loss: 0.502385
+ >>> rpn_loss_cls: 0.012374
+ >>> rpn_loss_box: 0.010082
+ >>> loss_cls: 0.008628
+ >>> loss_box: 0.088742
+ >>> lr: 0.000100
+speed: 0.259s / iter
+iter: 800 / 3000, total loss: 1.256728
+ >>> rpn_loss_cls: 0.085343
+ >>> rpn_loss_box: 0.236189
+ >>> loss_cls: 0.180898
+ >>> loss_box: 0.371739
+ >>> lr: 0.000100
+speed: 0.259s / iter
+iter: 820 / 3000, total loss: 1.291406
+ >>> rpn_loss_cls: 0.362861
+ >>> rpn_loss_box: 0.050610
+ >>> loss_cls: 0.216596
+ >>> loss_box: 0.278780
+ >>> lr: 0.000100
+speed: 0.258s / iter
+iter: 840 / 3000, total loss: 0.514638
+ >>> rpn_loss_cls: 0.008376
+ >>> rpn_loss_box: 0.014196
+ >>> loss_cls: 0.005310
+ >>> loss_box: 0.104200
+ >>> lr: 0.000100
+speed: 0.257s / iter
+iter: 860 / 3000, total loss: 0.635561
+ >>> rpn_loss_cls: 0.114888
+ >>> rpn_loss_box: 0.019278
+ >>> loss_cls: 0.013455
+ >>> loss_box: 0.105386
+ >>> lr: 0.000100
+speed: 0.256s / iter
+iter: 880 / 3000, total loss: 0.458227
+ >>> rpn_loss_cls: 0.019016
+ >>> rpn_loss_box: 0.006220
+ >>> loss_cls: 0.002018
+ >>> loss_box: 0.048420
+ >>> lr: 0.000100
+speed: 0.256s / iter
+iter: 900 / 3000, total loss: 0.665778
+ >>> rpn_loss_cls: 0.025853
+ >>> rpn_loss_box: 0.108005
+ >>> loss_cls: 0.000372
+ >>> loss_box: 0.148995
+ >>> lr: 0.000100
+speed: 0.255s / iter
+iter: 920 / 3000, total loss: 0.461877
+ >>> rpn_loss_cls: 0.005952
+ >>> rpn_loss_box: 0.005753
+ >>> loss_cls: 0.002498
+ >>> loss_box: 0.065124
+ >>> lr: 0.000100
+speed: 0.255s / iter
+iter: 940 / 3000, total loss: 0.748940
+ >>> rpn_loss_cls: 0.030287
+ >>> rpn_loss_box: 0.124384
+ >>> loss_cls: 0.000314
+ >>> loss_box: 0.211406
+ >>> lr: 0.000100
+speed: 0.254s / iter
+iter: 960 / 3000, total loss: 0.553120
+ >>> rpn_loss_cls: 0.013513
+ >>> rpn_loss_box: 0.051467
+ >>> loss_cls: 0.001880
+ >>> loss_box: 0.103712
+ >>> lr: 0.000100
+speed: 0.254s / iter
+iter: 980 / 3000, total loss: 0.556549
+ >>> rpn_loss_cls: 0.012658
+ >>> rpn_loss_box: 0.065316
+ >>> loss_cls: 0.028852
+ >>> loss_box: 0.067175
+ >>> lr: 0.000100
+speed: 0.253s / iter
+iter: 1000 / 3000, total loss: 0.628794
+ >>> rpn_loss_cls: 0.026976
+ >>> rpn_loss_box: 0.086487
+ >>> loss_cls: 0.033170
+ >>> loss_box: 0.099613
+ >>> lr: 0.000100
+speed: 0.253s / iter
+iter: 1020 / 3000, total loss: 0.951015
+ >>> rpn_loss_cls: 0.222673
+ >>> rpn_loss_box: 0.068624
+ >>> loss_cls: 0.069025
+ >>> loss_box: 0.208147
+ >>> lr: 0.000100
+speed: 0.252s / iter
+iter: 1040 / 3000, total loss: 0.602688
+ >>> rpn_loss_cls: 0.009816
+ >>> rpn_loss_box: 0.013725
+ >>> loss_cls: 0.002409
+ >>> loss_box: 0.194191
+ >>> lr: 0.000100
+speed: 0.252s / iter
+iter: 1060 / 3000, total loss: 0.546332
+ >>> rpn_loss_cls: 0.016127
+ >>> rpn_loss_box: 0.015943
+ >>> loss_cls: 0.023042
+ >>> loss_box: 0.108676
+ >>> lr: 0.000100
+speed: 0.251s / iter
+iter: 1080 / 3000, total loss: 0.640205
+ >>> rpn_loss_cls: 0.031278
+ >>> rpn_loss_box: 0.146581
+ >>> loss_cls: 0.002091
+ >>> loss_box: 0.077710
+ >>> lr: 0.000100
+speed: 0.251s / iter
+iter: 1100 / 3000, total loss: 0.490668
+ >>> rpn_loss_cls: 0.019528
+ >>> rpn_loss_box: 0.011756
+ >>> loss_cls: 0.001026
+ >>> loss_box: 0.075814
+ >>> lr: 0.000100
+speed: 0.251s / iter
+iter: 1120 / 3000, total loss: 0.695105
+ >>> rpn_loss_cls: 0.007860
+ >>> rpn_loss_box: 0.012682
+ >>> loss_cls: 0.045371
+ >>> loss_box: 0.246652
+ >>> lr: 0.000100
+speed: 0.250s / iter
+iter: 1140 / 3000, total loss: 0.469418
+ >>> rpn_loss_cls: 0.026331
+ >>> rpn_loss_box: 0.007836
+ >>> loss_cls: 0.022568
+ >>> loss_box: 0.030143
+ >>> lr: 0.000100
+speed: 0.249s / iter
+iter: 1160 / 3000, total loss: 0.487309
+ >>> rpn_loss_cls: 0.015659
+ >>> rpn_loss_box: 0.018849
+ >>> loss_cls: 0.008079
+ >>> loss_box: 0.062184
+ >>> lr: 0.000100
+speed: 0.249s / iter
+iter: 1180 / 3000, total loss: 0.725456
+ >>> rpn_loss_cls: 0.023622
+ >>> rpn_loss_box: 0.036668
+ >>> loss_cls: 0.154203
+ >>> loss_box: 0.128425
+ >>> lr: 0.000100
+speed: 0.249s / iter
+iter: 1200 / 3000, total loss: 0.634097
+ >>> rpn_loss_cls: 0.016595
+ >>> rpn_loss_box: 0.026032
+ >>> loss_cls: 0.078459
+ >>> loss_box: 0.130474
+ >>> lr: 0.000100
+speed: 0.249s / iter
+iter: 1220 / 3000, total loss: 1.039308
+ >>> rpn_loss_cls: 0.326711
+ >>> rpn_loss_box: 0.041685
+ >>> loss_cls: 0.015982
+ >>> loss_box: 0.272395
+ >>> lr: 0.000100
+speed: 0.248s / iter
+iter: 1240 / 3000, total loss: 0.547160
+ >>> rpn_loss_cls: 0.062003
+ >>> rpn_loss_box: 0.072649
+ >>> loss_cls: 0.000707
+ >>> loss_box: 0.029268
+ >>> lr: 0.000100
+speed: 0.248s / iter
+iter: 1260 / 3000, total loss: 1.234800
+ >>> rpn_loss_cls: 0.571305
+ >>> rpn_loss_box: 0.091128
+ >>> loss_cls: 0.062167
+ >>> loss_box: 0.127665
+ >>> lr: 0.000100
+speed: 0.247s / iter
+iter: 1280 / 3000, total loss: 0.522500
+ >>> rpn_loss_cls: 0.042449
+ >>> rpn_loss_box: 0.026988
+ >>> loss_cls: 0.001821
+ >>> loss_box: 0.068708
+ >>> lr: 0.000100
+speed: 0.247s / iter
+iter: 1300 / 3000, total loss: 0.603416
+ >>> rpn_loss_cls: 0.025448
+ >>> rpn_loss_box: 0.113913
+ >>> loss_cls: 0.001485
+ >>> loss_box: 0.080038
+ >>> lr: 0.000100
+speed: 0.247s / iter
+iter: 1320 / 3000, total loss: 0.481417
+ >>> rpn_loss_cls: 0.013368
+ >>> rpn_loss_box: 0.004678
+ >>> loss_cls: 0.028932
+ >>> loss_box: 0.051908
+ >>> lr: 0.000100
+speed: 0.247s / iter
+iter: 1340 / 3000, total loss: 0.440458
+ >>> rpn_loss_cls: 0.010119
+ >>> rpn_loss_box: 0.018401
+ >>> loss_cls: 0.001720
+ >>> loss_box: 0.027688
+ >>> lr: 0.000100
+speed: 0.247s / iter
+iter: 1360 / 3000, total loss: 0.511268
+ >>> rpn_loss_cls: 0.013331
+ >>> rpn_loss_box: 0.010081
+ >>> loss_cls: 0.007939
+ >>> loss_box: 0.097387
+ >>> lr: 0.000100
+speed: 0.246s / iter
+iter: 1380 / 3000, total loss: 0.854965
+ >>> rpn_loss_cls: 0.156001
+ >>> rpn_loss_box: 0.065286
+ >>> loss_cls: 0.150451
+ >>> loss_box: 0.100699
+ >>> lr: 0.000100
+speed: 0.246s / iter
+iter: 1400 / 3000, total loss: 0.475115
+ >>> rpn_loss_cls: 0.025961
+ >>> rpn_loss_box: 0.010081
+ >>> loss_cls: 0.001190
+ >>> loss_box: 0.055357
+ >>> lr: 0.000100
+speed: 0.246s / iter
+iter: 1420 / 3000, total loss: 0.899993
+ >>> rpn_loss_cls: 0.089627
+ >>> rpn_loss_box: 0.012415
+ >>> loss_cls: 0.164842
+ >>> loss_box: 0.250583
+ >>> lr: 0.000100
+speed: 0.246s / iter
+iter: 1440 / 3000, total loss: 0.587555
+ >>> rpn_loss_cls: 0.058740
+ >>> rpn_loss_box: 0.008517
+ >>> loss_cls: 0.001052
+ >>> loss_box: 0.136722
+ >>> lr: 0.000100
+speed: 0.246s / iter
+iter: 1460 / 3000, total loss: 0.527664
+ >>> rpn_loss_cls: 0.043619
+ >>> rpn_loss_box: 0.016203
+ >>> loss_cls: 0.034354
+ >>> loss_box: 0.050964
+ >>> lr: 0.000100
+speed: 0.245s / iter
+iter: 1480 / 3000, total loss: 0.698442
+ >>> rpn_loss_cls: 0.017046
+ >>> rpn_loss_box: 0.151343
+ >>> loss_cls: 0.019370
+ >>> loss_box: 0.128159
+ >>> lr: 0.000100
+speed: 0.246s / iter
+iter: 1500 / 3000, total loss: 0.488567
+ >>> rpn_loss_cls: 0.012660
+ >>> rpn_loss_box: 0.008688
+ >>> loss_cls: 0.037451
+ >>> loss_box: 0.047247
+ >>> lr: 0.000100
+speed: 0.245s / iter
+iter: 1520 / 3000, total loss: 0.496914
+ >>> rpn_loss_cls: 0.055344
+ >>> rpn_loss_box: 0.015842
+ >>> loss_cls: 0.000321
+ >>> loss_box: 0.042888
+ >>> lr: 0.000100
+speed: 0.245s / iter
+iter: 1540 / 3000, total loss: 0.476772
+ >>> rpn_loss_cls: 0.012062
+ >>> rpn_loss_box: 0.021188
+ >>> loss_cls: 0.003386
+ >>> loss_box: 0.057616
+ >>> lr: 0.000100
+speed: 0.245s / iter
+iter: 1560 / 3000, total loss: 0.729232
+ >>> rpn_loss_cls: 0.079515
+ >>> rpn_loss_box: 0.061223
+ >>> loss_cls: 0.173984
+ >>> loss_box: 0.031992
+ >>> lr: 0.000100
+speed: 0.244s / iter
+iter: 1580 / 3000, total loss: 0.591569
+ >>> rpn_loss_cls: 0.020527
+ >>> rpn_loss_box: 0.034167
+ >>> loss_cls: 0.016766
+ >>> loss_box: 0.137594
+ >>> lr: 0.000100
+speed: 0.244s / iter
+iter: 1600 / 3000, total loss: 0.509549
+ >>> rpn_loss_cls: 0.010520
+ >>> rpn_loss_box: 0.023860
+ >>> loss_cls: 0.027610
+ >>> loss_box: 0.065044
+ >>> lr: 0.000100
+speed: 0.244s / iter
+iter: 1620 / 3000, total loss: 0.571343
+ >>> rpn_loss_cls: 0.020096
+ >>> rpn_loss_box: 0.113760
+ >>> loss_cls: 0.001241
+ >>> loss_box: 0.053732
+ >>> lr: 0.000100
+speed: 0.244s / iter
+iter: 1640 / 3000, total loss: 0.721274
+ >>> rpn_loss_cls: 0.171668
+ >>> rpn_loss_box: 0.034976
+ >>> loss_cls: 0.017849
+ >>> loss_box: 0.114269
+ >>> lr: 0.000100
+speed: 0.243s / iter
+iter: 1660 / 3000, total loss: 0.493224
+ >>> rpn_loss_cls: 0.011434
+ >>> rpn_loss_box: 0.023120
+ >>> loss_cls: 0.014055
+ >>> loss_box: 0.062103
+ >>> lr: 0.000100
+speed: 0.243s / iter
+iter: 1680 / 3000, total loss: 0.618510
+ >>> rpn_loss_cls: 0.144632
+ >>> rpn_loss_box: 0.018534
+ >>> loss_cls: 0.002633
+ >>> loss_box: 0.070198
+ >>> lr: 0.000100
+speed: 0.243s / iter
+iter: 1700 / 3000, total loss: 1.122872
+ >>> rpn_loss_cls: 0.051988
+ >>> rpn_loss_box: 0.045405
+ >>> loss_cls: 0.541481
+ >>> loss_box: 0.101486
+ >>> lr: 0.000100
+speed: 0.243s / iter
+iter: 1720 / 3000, total loss: 0.579291
+ >>> rpn_loss_cls: 0.156016
+ >>> rpn_loss_box: 0.004400
+ >>> loss_cls: 0.002415
+ >>> loss_box: 0.033950
+ >>> lr: 0.000100
+speed: 0.243s / iter
+iter: 1740 / 3000, total loss: 0.550945
+ >>> rpn_loss_cls: 0.040529
+ >>> rpn_loss_box: 0.083914
+ >>> loss_cls: 0.000311
+ >>> loss_box: 0.043682
+ >>> lr: 0.000100
+speed: 0.242s / iter
+iter: 1760 / 3000, total loss: 0.522467
+ >>> rpn_loss_cls: 0.009571
+ >>> rpn_loss_box: 0.027827
+ >>> loss_cls: 0.001272
+ >>> loss_box: 0.101288
+ >>> lr: 0.000100
+speed: 0.242s / iter
+iter: 1780 / 3000, total loss: 0.450395
+ >>> rpn_loss_cls: 0.011416
+ >>> rpn_loss_box: 0.004066
+ >>> loss_cls: 0.000913
+ >>> loss_box: 0.051493
+ >>> lr: 0.000100
+speed: 0.242s / iter
+iter: 1800 / 3000, total loss: 0.677545
+ >>> rpn_loss_cls: 0.011108
+ >>> rpn_loss_box: 0.013076
+ >>> loss_cls: 0.007063
+ >>> loss_box: 0.263795
+ >>> lr: 0.000100
+speed: 0.242s / iter
+iter: 1820 / 3000, total loss: 0.587254
+ >>> rpn_loss_cls: 0.012952
+ >>> rpn_loss_box: 0.041707
+ >>> loss_cls: 0.032984
+ >>> loss_box: 0.117108
+ >>> lr: 0.000100
+speed: 0.242s / iter
+iter: 1840 / 3000, total loss: 0.540435
+ >>> rpn_loss_cls: 0.014594
+ >>> rpn_loss_box: 0.002412
+ >>> loss_cls: 0.093616
+ >>> loss_box: 0.047310
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1860 / 3000, total loss: 0.991159
+ >>> rpn_loss_cls: 0.483730
+ >>> rpn_loss_box: 0.104287
+ >>> loss_cls: 0.000087
+ >>> loss_box: 0.020552
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1880 / 3000, total loss: 0.460778
+ >>> rpn_loss_cls: 0.006744
+ >>> rpn_loss_box: 0.026653
+ >>> loss_cls: 0.011059
+ >>> loss_box: 0.033821
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1900 / 3000, total loss: 0.529719
+ >>> rpn_loss_cls: 0.086775
+ >>> rpn_loss_box: 0.008322
+ >>> loss_cls: 0.001602
+ >>> loss_box: 0.050517
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1920 / 3000, total loss: 0.684802
+ >>> rpn_loss_cls: 0.227313
+ >>> rpn_loss_box: 0.028167
+ >>> loss_cls: 0.016645
+ >>> loss_box: 0.030176
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1940 / 3000, total loss: 1.132988
+ >>> rpn_loss_cls: 0.014889
+ >>> rpn_loss_box: 0.011017
+ >>> loss_cls: 0.699526
+ >>> loss_box: 0.025056
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1960 / 3000, total loss: 0.726924
+ >>> rpn_loss_cls: 0.083884
+ >>> rpn_loss_box: 0.160113
+ >>> loss_cls: 0.005555
+ >>> loss_box: 0.094874
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 1980 / 3000, total loss: 0.501023
+ >>> rpn_loss_cls: 0.042330
+ >>> rpn_loss_box: 0.023588
+ >>> loss_cls: 0.004481
+ >>> loss_box: 0.048125
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 2000 / 3000, total loss: 0.900131
+ >>> rpn_loss_cls: 0.186605
+ >>> rpn_loss_box: 0.132669
+ >>> loss_cls: 0.009140
+ >>> loss_box: 0.189220
+ >>> lr: 0.000100
+speed: 0.241s / iter
+iter: 2020 / 3000, total loss: 0.543588
+ >>> rpn_loss_cls: 0.015355
+ >>> rpn_loss_box: 0.016171
+ >>> loss_cls: 0.019949
+ >>> loss_box: 0.109618
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2040 / 3000, total loss: 0.522506
+ >>> rpn_loss_cls: 0.015574
+ >>> rpn_loss_box: 0.081558
+ >>> loss_cls: 0.002119
+ >>> loss_box: 0.040761
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2060 / 3000, total loss: 0.414204
+ >>> rpn_loss_cls: 0.009756
+ >>> rpn_loss_box: 0.003255
+ >>> loss_cls: 0.000436
+ >>> loss_box: 0.018264
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2080 / 3000, total loss: 0.479528
+ >>> rpn_loss_cls: 0.036524
+ >>> rpn_loss_box: 0.001604
+ >>> loss_cls: 0.032730
+ >>> loss_box: 0.026178
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2100 / 3000, total loss: 0.738750
+ >>> rpn_loss_cls: 0.015093
+ >>> rpn_loss_box: 0.163919
+ >>> loss_cls: 0.001121
+ >>> loss_box: 0.176125
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2120 / 3000, total loss: 0.548278
+ >>> rpn_loss_cls: 0.014004
+ >>> rpn_loss_box: 0.045343
+ >>> loss_cls: 0.042134
+ >>> loss_box: 0.064306
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2140 / 3000, total loss: 0.489825
+ >>> rpn_loss_cls: 0.003649
+ >>> rpn_loss_box: 0.007815
+ >>> loss_cls: 0.062186
+ >>> loss_box: 0.033686
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2160 / 3000, total loss: 0.464607
+ >>> rpn_loss_cls: 0.016661
+ >>> rpn_loss_box: 0.006181
+ >>> loss_cls: 0.001828
+ >>> loss_box: 0.057449
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2180 / 3000, total loss: 0.657732
+ >>> rpn_loss_cls: 0.024267
+ >>> rpn_loss_box: 0.044359
+ >>> loss_cls: 0.078299
+ >>> loss_box: 0.128321
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2200 / 3000, total loss: 0.540198
+ >>> rpn_loss_cls: 0.005921
+ >>> rpn_loss_box: 0.012683
+ >>> loss_cls: 0.125523
+ >>> loss_box: 0.013585
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2220 / 3000, total loss: 0.599858
+ >>> rpn_loss_cls: 0.096413
+ >>> rpn_loss_box: 0.018711
+ >>> loss_cls: 0.036784
+ >>> loss_box: 0.065465
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2240 / 3000, total loss: 0.964345
+ >>> rpn_loss_cls: 0.034574
+ >>> rpn_loss_box: 0.079104
+ >>> loss_cls: 0.430965
+ >>> loss_box: 0.037218
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2260 / 3000, total loss: 0.556651
+ >>> rpn_loss_cls: 0.018214
+ >>> rpn_loss_box: 0.039899
+ >>> loss_cls: 0.054948
+ >>> loss_box: 0.061109
+ >>> lr: 0.000100
+speed: 0.240s / iter
+iter: 2280 / 3000, total loss: 0.541845
+ >>> rpn_loss_cls: 0.012716
+ >>> rpn_loss_box: 0.034892
+ >>> loss_cls: 0.000508
+ >>> loss_box: 0.111248
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2300 / 3000, total loss: 0.431295
+ >>> rpn_loss_cls: 0.012694
+ >>> rpn_loss_box: 0.002551
+ >>> loss_cls: 0.000299
+ >>> loss_box: 0.033271
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2320 / 3000, total loss: 0.503713
+ >>> rpn_loss_cls: 0.026828
+ >>> rpn_loss_box: 0.044524
+ >>> loss_cls: 0.002670
+ >>> loss_box: 0.047213
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2340 / 3000, total loss: 0.542627
+ >>> rpn_loss_cls: 0.046427
+ >>> rpn_loss_box: 0.023575
+ >>> loss_cls: 0.005179
+ >>> loss_box: 0.084968
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2360 / 3000, total loss: 0.970683
+ >>> rpn_loss_cls: 0.085490
+ >>> rpn_loss_box: 0.052915
+ >>> loss_cls: 0.019511
+ >>> loss_box: 0.430291
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2380 / 3000, total loss: 0.435667
+ >>> rpn_loss_cls: 0.004764
+ >>> rpn_loss_box: 0.007107
+ >>> loss_cls: 0.003610
+ >>> loss_box: 0.037712
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2400 / 3000, total loss: 0.541580
+ >>> rpn_loss_cls: 0.083073
+ >>> rpn_loss_box: 0.026694
+ >>> loss_cls: 0.007851
+ >>> loss_box: 0.041488
+ >>> lr: 0.000100
+speed: 0.239s / iter
+iter: 2420 / 3000, total loss: 0.421264
+ >>> rpn_loss_cls: 0.004333
+ >>> rpn_loss_box: 0.009933
+ >>> loss_cls: 0.000962
+ >>> loss_box: 0.023563
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2440 / 3000, total loss: 0.953587
+ >>> rpn_loss_cls: 0.030412
+ >>> rpn_loss_box: 0.113870
+ >>> loss_cls: 0.002264
+ >>> loss_box: 0.424570
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2460 / 3000, total loss: 0.700636
+ >>> rpn_loss_cls: 0.183468
+ >>> rpn_loss_box: 0.063511
+ >>> loss_cls: 0.000486
+ >>> loss_box: 0.070701
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2480 / 3000, total loss: 0.919035
+ >>> rpn_loss_cls: 0.029020
+ >>> rpn_loss_box: 0.083233
+ >>> loss_cls: 0.002764
+ >>> loss_box: 0.421549
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2500 / 3000, total loss: 0.489213
+ >>> rpn_loss_cls: 0.043697
+ >>> rpn_loss_box: 0.019964
+ >>> loss_cls: 0.013715
+ >>> loss_box: 0.029369
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2520 / 3000, total loss: 0.418034
+ >>> rpn_loss_cls: 0.004841
+ >>> rpn_loss_box: 0.008562
+ >>> loss_cls: 0.004529
+ >>> loss_box: 0.017636
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2540 / 3000, total loss: 0.445301
+ >>> rpn_loss_cls: 0.010041
+ >>> rpn_loss_box: 0.005260
+ >>> loss_cls: 0.027379
+ >>> loss_box: 0.020155
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2560 / 3000, total loss: 0.683930
+ >>> rpn_loss_cls: 0.052763
+ >>> rpn_loss_box: 0.149072
+ >>> loss_cls: 0.007038
+ >>> loss_box: 0.092592
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2580 / 3000, total loss: 0.448982
+ >>> rpn_loss_cls: 0.015469
+ >>> rpn_loss_box: 0.015177
+ >>> loss_cls: 0.000413
+ >>> loss_box: 0.035458
+ >>> lr: 0.000100
+speed: 0.238s / iter
+iter: 2600 / 3000, total loss: 0.514269
+ >>> rpn_loss_cls: 0.007463
+ >>> rpn_loss_box: 0.007537
+ >>> loss_cls: 0.015692
+ >>> loss_box: 0.101113
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2620 / 3000, total loss: 0.571294
+ >>> rpn_loss_cls: 0.006361
+ >>> rpn_loss_box: 0.082310
+ >>> loss_cls: 0.012106
+ >>> loss_box: 0.088054
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2640 / 3000, total loss: 0.456814
+ >>> rpn_loss_cls: 0.017939
+ >>> rpn_loss_box: 0.038149
+ >>> loss_cls: 0.000058
+ >>> loss_box: 0.018209
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2660 / 3000, total loss: 0.450713
+ >>> rpn_loss_cls: 0.012915
+ >>> rpn_loss_box: 0.013903
+ >>> loss_cls: 0.012181
+ >>> loss_box: 0.029255
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2680 / 3000, total loss: 0.468924
+ >>> rpn_loss_cls: 0.010866
+ >>> rpn_loss_box: 0.004045
+ >>> loss_cls: 0.001011
+ >>> loss_box: 0.070544
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2700 / 3000, total loss: 0.506224
+ >>> rpn_loss_cls: 0.011389
+ >>> rpn_loss_box: 0.062295
+ >>> loss_cls: 0.004270
+ >>> loss_box: 0.045813
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2720 / 3000, total loss: 0.462990
+ >>> rpn_loss_cls: 0.013720
+ >>> rpn_loss_box: 0.040002
+ >>> loss_cls: 0.004368
+ >>> loss_box: 0.022442
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2740 / 3000, total loss: 0.474710
+ >>> rpn_loss_cls: 0.007410
+ >>> rpn_loss_box: 0.007003
+ >>> loss_cls: 0.004524
+ >>> loss_box: 0.073316
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2760 / 3000, total loss: 0.457935
+ >>> rpn_loss_cls: 0.010782
+ >>> rpn_loss_box: 0.014524
+ >>> loss_cls: 0.001825
+ >>> loss_box: 0.048349
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2780 / 3000, total loss: 0.905100
+ >>> rpn_loss_cls: 0.042360
+ >>> rpn_loss_box: 0.014909
+ >>> loss_cls: 0.074415
+ >>> loss_box: 0.390961
+ >>> lr: 0.000100
+speed: 0.237s / iter
+iter: 2800 / 3000, total loss: 0.470386
+ >>> rpn_loss_cls: 0.049954
+ >>> rpn_loss_box: 0.006863
+ >>> loss_cls: 0.000654
+ >>> loss_box: 0.030461
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2820 / 3000, total loss: 0.510292
+ >>> rpn_loss_cls: 0.044241
+ >>> rpn_loss_box: 0.014809
+ >>> loss_cls: 0.006866
+ >>> loss_box: 0.061925
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2840 / 3000, total loss: 0.490604
+ >>> rpn_loss_cls: 0.034504
+ >>> rpn_loss_box: 0.034106
+ >>> loss_cls: 0.000637
+ >>> loss_box: 0.038907
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2860 / 3000, total loss: 0.472735
+ >>> rpn_loss_cls: 0.004332
+ >>> rpn_loss_box: 0.019973
+ >>> loss_cls: 0.010668
+ >>> loss_box: 0.055313
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2880 / 3000, total loss: 0.502596
+ >>> rpn_loss_cls: 0.060343
+ >>> rpn_loss_box: 0.007478
+ >>> loss_cls: 0.003596
+ >>> loss_box: 0.048731
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2900 / 3000, total loss: 0.469223
+ >>> rpn_loss_cls: 0.025608
+ >>> rpn_loss_box: 0.039403
+ >>> loss_cls: 0.000762
+ >>> loss_box: 0.021002
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2920 / 3000, total loss: 0.475520
+ >>> rpn_loss_cls: 0.014296
+ >>> rpn_loss_box: 0.048753
+ >>> loss_cls: 0.008339
+ >>> loss_box: 0.021684
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2940 / 3000, total loss: 0.441794
+ >>> rpn_loss_cls: 0.008203
+ >>> rpn_loss_box: 0.007221
+ >>> loss_cls: 0.011573
+ >>> loss_box: 0.032350
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2960 / 3000, total loss: 0.474609
+ >>> rpn_loss_cls: 0.016091
+ >>> rpn_loss_box: 0.027251
+ >>> loss_cls: 0.001285
+ >>> loss_box: 0.047538
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 2980 / 3000, total loss: 0.757533
+ >>> rpn_loss_cls: 0.026553
+ >>> rpn_loss_box: 0.234296
+ >>> loss_cls: 0.002737
+ >>> loss_box: 0.111505
+ >>> lr: 0.000100
+speed: 0.236s / iter
+iter: 3000 / 3000, total loss: 0.480022
+ >>> rpn_loss_cls: 0.006825
+ >>> rpn_loss_box: 0.072662
+ >>> loss_cls: 0.010747
+ >>> loss_box: 0.007345
+ >>> lr: 0.000100
+speed: 0.236s / iter
+Wrote snapshot to: /home/wenxiangyu/project/tf-faster-rcnn/output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_3000.ckpt
+done solving
+774.33user 221.10system 12:09.19elapsed 136%CPU (0avgtext+0avgdata 2949924maxresident)k
+333616inputs+1514792outputs (0major+4952608minor)pagefaults 0swaps

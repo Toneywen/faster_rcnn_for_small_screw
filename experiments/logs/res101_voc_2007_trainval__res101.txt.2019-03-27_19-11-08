@@ -1,0 +1,18 @@
++ echo Logging output to experiments/logs/res101_voc_2007_trainval__res101.txt.2019-03-27_19-11-08
+Logging output to experiments/logs/res101_voc_2007_trainval__res101.txt.2019-03-27_19-11-08
++ set +x
++ '[' '!' -f output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_70000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=3
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/res101.ckpt --imdb voc_2007_trainval --imdbval voc_2007_test --iters 70000 --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[50000]'
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 11, in <module>
+    from model.train_val import get_training_roidb, train_net
+  File "/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/model/__init__.py", line 1, in <module>
+    from . import config
+  File "/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/model/config.py", line 9, in <module>
+    from easydict import EasyDict as edict
+ImportError: No module named easydict
+Command exited with non-zero status 1
+0.98user 3.45system 0:00.14elapsed 3101%CPU (0avgtext+0avgdata 24672maxresident)k
+0inputs+0outputs (0major+3705minor)pagefaults 0swaps

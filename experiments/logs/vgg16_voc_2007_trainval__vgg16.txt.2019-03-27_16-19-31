@@ -1,0 +1,18 @@
++ echo Logging output to experiments/logs/vgg16_voc_2007_trainval__vgg16.txt.2019-03-27_16-19-31
+Logging output to experiments/logs/vgg16_voc_2007_trainval__vgg16.txt.2019-03-27_16-19-31
++ set +x
++ '[' '!' -f output/vgg16/voc_2007_trainval/default/vgg16_faster_rcnn_iter_70000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=1
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/vgg16.ckpt --imdb voc_2007_trainval --imdbval voc_2007_test --iters 70000 --cfg experiments/cfgs/vgg16.yml --net vgg16 --set ANCHOR_SCALES '[8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[50000]'
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 13, in <module>
+    from datasets.factory import get_imdb
+  File "/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/datasets/factory.py", line 15, in <module>
+    from datasets.coco import coco
+  File "/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/datasets/coco.py", line 23, in <module>
+    from pycocotools.coco import COCO
+ImportError: No module named pycocotools.coco
+Command exited with non-zero status 1
+2.51user 5.03system 0:00.90elapsed 834%CPU (0avgtext+0avgdata 223520maxresident)k
+0inputs+160outputs (0major+50072minor)pagefaults 0swaps

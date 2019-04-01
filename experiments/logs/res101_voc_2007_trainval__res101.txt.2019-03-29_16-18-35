@@ -1,0 +1,4 @@
++ echo Logging output to experiments/logs/res101_voc_2007_trainval__res101.txt.2019-03-29_16-18-35
+Logging output to experiments/logs/res101_voc_2007_trainval__res101.txt.2019-03-29_16-18-35
++ set +x
++ '[' '!' -f output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_70000.ckpt.index ']'

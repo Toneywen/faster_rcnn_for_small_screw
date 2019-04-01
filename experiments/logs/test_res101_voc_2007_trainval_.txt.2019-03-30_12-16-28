@@ -1,0 +1,175 @@
++ echo Logging output to experiments/logs/test_res101_voc_2007_trainval_.txt.2019-03-30_12-16-28
+Logging output to experiments/logs/test_res101_voc_2007_trainval_.txt.2019-03-30_12-16-28
++ set +x
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=1
++ time python ./tools/test_net.py --imdb voc_2007_test --model output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_50001.ckpt --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[8,16,32]' ANCHOR_RATIOS '[0.5,1,2]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/res101.yml', comp_mode=False, imdb_name='voc_2007_test', max_per_image=100, model='output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_50001.ckpt', net='res101', set_cfgs=['ANCHOR_SCALES', '[8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]'], tag='')
+/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/model/config.py:362: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'DATA_DIR': '/home/wenxiangyu/project/tf-faster-rcnn/data',
+ 'EXP_DIR': 'res101',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/home/wenxiangyu/project/tf-faster-rcnn',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+2019-03-30 12:16:29.757587: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-03-30 12:16:30.054007: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: TITAN Xp COLLECTORS EDITION major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:09:00.0
+totalMemory: 11.91GiB freeMemory: 7.30GiB
+2019-03-30 12:16:30.054058: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2019-03-30 12:16:30.483264: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-03-30 12:16:30.483308: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 
+2019-03-30 12:16:30.483318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N 
+2019-03-30 12:16:30.483629: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7049 MB memory) -> physical GPU (device: 0, name: TITAN Xp COLLECTORS EDITION, pci bus id: 0000:09:00.0, compute capability: 6.1)
+Loading model check point from output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_50001.ckpt
+Loaded.
+im_detect: 1/55 3.004s 0.001s
+im_detect: 2/55 1.846s 0.001s
+im_detect: 3/55 1.439s 0.001s
+im_detect: 4/55 1.240s 0.001s
+im_detect: 5/55 1.116s 0.001s
+im_detect: 6/55 1.036s 0.001s
+im_detect: 7/55 0.979s 0.001s
+im_detect: 8/55 0.937s 0.001s
+im_detect: 9/55 0.907s 0.001s
+im_detect: 10/55 0.880s 0.001s
+im_detect: 11/55 0.864s 0.001s
+im_detect: 12/55 0.848s 0.001s
+im_detect: 13/55 0.832s 0.001s
+im_detect: 14/55 0.817s 0.001s
+im_detect: 15/55 0.804s 0.001s
+im_detect: 16/55 0.794s 0.001s
+im_detect: 17/55 0.786s 0.001s
+im_detect: 18/55 0.777s 0.001s
+im_detect: 19/55 0.769s 0.001s
+im_detect: 20/55 0.763s 0.001s
+im_detect: 21/55 0.757s 0.001s
+im_detect: 22/55 0.751s 0.001s
+im_detect: 23/55 0.745s 0.001s
+im_detect: 24/55 0.740s 0.001s
+im_detect: 25/55 0.735s 0.001s
+im_detect: 26/55 0.732s 0.001s
+im_detect: 27/55 0.728s 0.001s
+im_detect: 28/55 0.726s 0.001s
+im_detect: 29/55 0.723s 0.001s
+im_detect: 30/55 0.721s 0.001s
+im_detect: 31/55 0.720s 0.001s
+im_detect: 32/55 0.718s 0.001s
+im_detect: 33/55 0.716s 0.001s
+im_detect: 34/55 0.713s 0.001s
+im_detect: 35/55 0.712s 0.001s
+im_detect: 36/55 0.710s 0.001s
+im_detect: 37/55 0.707s 0.001s
+im_detect: 38/55 0.705s 0.001s
+im_detect: 39/55 0.703s 0.001s
+im_detect: 40/55 0.701s 0.001s
+im_detect: 41/55 0.699s 0.001s
+im_detect: 42/55 0.698s 0.001s
+im_detect: 43/55 0.698s 0.001s
+im_detect: 44/55 0.697s 0.001s
+im_detect: 45/55 0.697s 0.001s
+im_detect: 46/55 0.696s 0.001s
+im_detect: 47/55 0.694s 0.001s
+im_detect: 48/55 0.694s 0.001s
+im_detect: 49/55 0.693s 0.001s
+im_detect: 50/55 0.692s 0.001s
+im_detect: 51/55 0.691s 0.001s
+im_detect: 52/55 0.690s 0.001s
+im_detect: 53/55 0.689s 0.001s
+im_detect: 54/55 0.689s 0.001s
+im_detect: 55/55 0.688s 0.001s
+Evaluating detections
+Writing screw VOC results file
+VOC07 metric? Yes
+/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/datasets/voc_eval.py:208: RuntimeWarning: invalid value encountered in true_divide
+  rec = tp / float(npos)
+/home/wenxiangyu/project/tf-faster-rcnn/tools/../lib/datasets/voc_eval.py:45: RuntimeWarning: invalid value encountered in greater_equal
+  if np.sum(rec >= t) == 0:
+AP for screw = 0.0000
+Mean AP = 0.0000
+~~~~~~~~
+Results:
+0.000
+0.000
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+48.83user 18.88system 1:00.28elapsed 112%CPU (0avgtext+0avgdata 2391024maxresident)k
+735160inputs+1056outputs (18major+5976130minor)pagefaults 0swaps
